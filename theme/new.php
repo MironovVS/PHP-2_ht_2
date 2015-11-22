@@ -6,10 +6,6 @@ $content - содержание
 $error - ошибка юзера
 */?>
 
-	<h1><?php echo $title ?></h1>
-	<br>
-	<a href="index.php">Главная</a> | <a href="editor.php">Консоль редактора</a>
-	<hr>
 	<h2>Новая статья</h2>
 	<?php if ($error): ?>
 		<b style="color:red">Заполните все поля!</b>

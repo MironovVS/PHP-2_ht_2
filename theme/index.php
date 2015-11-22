@@ -5,7 +5,6 @@
     <td>Название статьи</td>
     <td>Дата создания</td>
     <td>Текст статьи</td>
-    <td>Редактировать</td>
     <td>Удалить</td>
   </tr>
   <?php foreach ($articles_all as $article):
@@ -15,7 +14,6 @@
         <td><?php echo $article["$i"]['name']?></a></td>
         <td><?php echo $article["$i"]['date']?></td>
         <td><?php echo $article["$i"]['content']?></td>
-        <td><a href="edit.php?id=<?php echo $article["$i"]['id']?>">Редактировать</a></td>
         <td><a href="delete.php?id=<?php echo $article["$i"]['id']?>">Удалить</a></td>
       </tr>
     <?php endfor; ?>

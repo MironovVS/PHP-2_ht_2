@@ -1,16 +1,15 @@
 <?php
 
-require_once('startup.php');
-require_once('model.php');
-
-// подключаемся к БД
-startup();
+require_once('SQL/startup.php');
+require_once('model/model.php');
 
 // извлекаем все статьи
-$articles = articles_all();
+$articles_all = articles_all();
 
-// кодировку
-header('Content-type: text/html; charset=utf-8');
+//// кодировку
+//header('Content-type: text/html; charset=utf-8');
+
+$content='theme/editor.php';
 
 // вывод в шаблон
-include('theme/editor.php');
+include('Pattern/pattern-main.php');
