@@ -63,7 +63,9 @@ function articles_edit($id_article, $title, $content)
 // удаление статьи
 function articles_delete($id_article)
 {
-	// TODO
+	$sql="DELETE FROM `lesson2` WHERE `id` = $id_article";
+	mysqli_query(getDbConnect(),$sql);
+
 }
 
 // короткое описание статьи
