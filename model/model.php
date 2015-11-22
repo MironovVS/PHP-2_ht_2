@@ -31,7 +31,7 @@ function articles_get($id_article)
 }
 
 // добавить статью
-function articles_new($title, $content)
+function articles_new($title, $date, $content)
 {
 	// Подготовка
 	$title = trim($title);
@@ -43,13 +43,13 @@ function articles_new($title, $content)
 	}
 
 	// Запрос
-	$sql = "INSERT INTO `articles` (`title`, `content`) VALUES ('%s', '%s')";
+	$sql = "INSERT INTO `lesson2` (`date`, `name`,`content`) VALUES ('$date','%s', '%s')";
 	$query = sprintf($sql, sql_escape($title), sql_escape($content));
 
 	$result = mysqli_query(getDbConnect(), $query);
 
 	if (!$result) {
-		die(mysqli_error());
+		die(mysqli_error(getDbConnect()));
 	}
 	return true;
 }
