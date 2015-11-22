@@ -1,29 +1,32 @@
 <?php
 
-require_once('startup.php');
-require_once('model.php');
+require_once('SQL/startup.php');
+require_once('model/model.php');
 
-// подключаемся к БД
-startup();
-
-// Определяем переменные для шаблона
-$title = '';
-$content = '';
-$error = false;
+//// подключаемся к БД
+//startup();
 
 // Обработка отправки формы
-if (!empty($_POST) && isset($_POST['title'] && isset($_POST['content']) {
-	// успешно данные добавлены, редирект
-	if (articles_new($_POST['title'], $_POST['content'])) {
-		die(header('Location: editor.php'));
+if (isset($_POST['submit'])) {
+	if ($_POST['title_art'] != "" && $_POST['content_art'] != "") {
+		articles_new($_POST['title_art'], $_POST['date_art'], $_POST['content_art']);
+		die(header('Location: index.php'));
+	} else {
+		echo "Введите название статьи";
 	}
-	$title = $_POST['title'];
-	$content = $_POST['content'];
-	$error = true;
 }
 
-// кодировку
-header('Content-type: text/html; charset=utf-8');
+// Обработка отправки формы
+//if (!empty($_POST) && isset($_POST['title_art']) && isset($_POST['content_art'])) {
+//	// успешно данные добавлены, редирект
+//	if (articles_new($_POST['title_art'],$_POST['date_art'], $_POST['content_art'])) {
+//		die(header('Location: editor.php'));
+//	}
+
+$title="Добавить статью";
+
+//// кодировку
+//header('Content-type: text/html; charset=utf-8');
 
 // вывод в шаблон
 include('theme/new.php');
