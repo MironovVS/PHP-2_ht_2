@@ -16,7 +16,7 @@
         <td><?php echo $article["$i"]['date']?></td>
         <td><?php echo $article["$i"]['content']?></td>
         <td><a href="#?id=<?php echo $article["$i"]['id']?>">Редактировать</a></td>
-        <td><a href="#?id=<?php echo $article["$i"]['id']?>">Удалить</a></td>
+        <td><a href="delete.php?id=<?php echo $article["$i"]['id']?>">Удалить</a></td>
       </tr>
     <?php endfor; ?>
   <?php endforeach;?>
