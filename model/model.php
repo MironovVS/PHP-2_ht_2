@@ -1,13 +1,15 @@
 <?php
 
+include_once 'SQL/startup.php';
+
 // список всех статей
 function articles_all()
 {
 	// запрос
-	$sql = 'SELECT * FROM `articles` ORDER BY id_article DESC';
+	$sql = 'SELECT * FROM `lesson2` ORDER BY `date` DESC';
 	$result = mysqli_query(getDbConnect(), $sql);
 	if (!$result) {
-		die(mysqli_error());
+		die(mysqli_error(getDbConnect()));
 	}
 
 	// извлекаем из БД данные
@@ -19,7 +21,7 @@ function articles_all()
 	while ($row = mysqli_fetch_assoc($result)) {
 		$articles[] = $row;
 	}
-	return $articles;
+	return array($articles);
 }
 
 // получить конкретную статью

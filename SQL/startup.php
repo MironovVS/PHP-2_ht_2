@@ -21,7 +21,7 @@ function getDbConnect()
 	$hostname = 'localhost';
 	$username = 'root';
 	$password = '';
-	$dbName = 'lesson2';
+	$dbName = 'ht_2_Mironov';
 
 	// только одно соединение с бд
 	if ($link === null) {
