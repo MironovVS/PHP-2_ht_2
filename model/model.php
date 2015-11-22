@@ -27,7 +27,14 @@ function articles_all()
 // получить конкретную статью
 function articles_get($id_article)
 {
-	// TODO
+		$id_article=(int)($id_article);
+		$sql="SELECT * FROM `Lesson2` WHERE `id`=$id_article";
+		$request=mysqli_query(getDbConnect(),$sql);
+		$search=array();
+		While ($row=mysqli_fetch_assoc($request)) {
+			$search[]=$row;
+		}
+		return array($search);
 }
 
 // добавить статью
@@ -55,15 +62,23 @@ function articles_new($title, $date, $content)
 }
 
 // изменить статью
-function articles_edit($id_article, $title, $content)
+function articles_edit($id_article, $name, $content)
 {
-	// TODO
+	//Безопасность от иньекций
+	$id_article=(int)($id_article);
+	$name = sql_escape($name);
+	$content = sql_escape($content);
+
+	//Запрос в бд
+	$request="UPDATE `lesson2` SET `name`='$name', `content`='$content' WHERE `id`='$id_article'";
+	mysqli_query(getDbConnect(),$request);
 }
 
 // удаление статьи
 function articles_delete($id_article)
 {
 	$sql="DELETE FROM `lesson2` WHERE `id` = $id_article";
+	$sql=sql_escape($sql);
 	mysqli_query(getDbConnect(),$sql);
 
 }
