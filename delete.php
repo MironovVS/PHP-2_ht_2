@@ -3,6 +3,11 @@
 // подключаем библиотеки
 require_once('model/model.php');
 
+$id=(int)$_GET['id'];
+if (!$id) {
+  die("Не верный id");
+}
 
-articles_delete($_GET['id']);
-header('Location: index.php');
+//Удаляем статью по id
+articles_delete($id);
+header('Location: editor.php');
