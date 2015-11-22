@@ -3,13 +3,14 @@
 require_once('SQL/startup.php');
 require_once('model/model.php');
 
-// извлекаем все статьи
+// Подготовка данных
 $articles_all = articles_all();
 
-//// кодировку
-//header('Content-type: text/html; charset=utf-8');
+// Заголовок страницы
+$title="Консоль редактора";
 
+// Заготовка страницы
 $content='theme/editor.php';
 
-// вывод в шаблон
+// Вывод HTML
 include('Pattern/pattern-main.php');
