@@ -23,5 +23,5 @@
   </tbody>
 </table>
 <footer>
-  <a href="#/add.php">Добавить статью</a>
+  <a href="new.php">Добавить статью</a>
 </footer>
