@@ -37,6 +37,8 @@ function articles_get($id_article)
 		// Подготовка
 		$id_article=(int)$id_article;
 
+		logs($id_article, "article");
+
 		//Запрос
 		$sql="SELECT * FROM `Lesson2` WHERE `id`=$id_article";
 
@@ -70,6 +72,8 @@ function articles_new($name, $date, $content)
 	// Запрос
 	$sql = "INSERT INTO `lesson2` (`date`, `name`,`content`) VALUES ('$date','%s', '%s')";
 
+	logs($name, "new");
+
 	//выполняем запрос
 	$query = sprintf($sql, sql_escape($name), sql_escape($content));
 	$result = mysqli_query(getDbConnect(), $query);
@@ -88,8 +92,11 @@ function articles_edit($id_article, $name, $content)
 	$name = sql_escape($name);
 	$content = sql_escape($content);
 
+
 	//Запрос в бд
 	$request="UPDATE `lesson2` SET `name`='$name', `content`='$content' WHERE `id`='$id_article'";
+
+	logs($id_article, "edit");
 
 	//Выполняем запрос
 	mysqli_query(getDbConnect(),$request);
@@ -104,6 +111,7 @@ function articles_delete($id_article)
 	//Запрос
 	$sql="DELETE FROM `lesson2` WHERE `id` = $id_article";
 
+	logs($id_article, "del");
 
 	//Выполняем запрос
 	mysqli_query(getDbConnect(),$sql);
@@ -115,4 +123,34 @@ function articles_intro($article)
 {
 	// TODO
 	// $article - это ассоциативный массив, представляющий статью
+}
+
+//Делаем логи
+function logs($log, $value) {
+	switch($value) {
+		case "article":
+			$f = fopen('log/log-article.txt', 'a+');
+			$time = date('H:i:s');
+			fputs($f, "Пользователь просмотрел статью c id: ".$log." в $time \n");
+			fclose($f);
+			break;
+		case "new":
+			$f = fopen('log/log-new.txt', 'a+');
+			$time = date('H:i:s');
+			fputs($f, "Пользователь создал статью с именем ".$log." в $time \n");
+			fclose($f);
+			break;
+		case "edit":
+			$f = fopen('log/log-edit.txt', 'a+');
+			$time = date('H:i:s');
+			fputs($f, "Пользователь редактировал статью с id ".$log." в $time \n");
+			fclose($f);
+			break;
+		case "del":
+			$f = fopen('log/log-del.txt', 'a+');
+			$time = date('H:i:s');
+			fputs($f, "Пользователь удалил статью с id ".$log." в $time \n");
+			fclose($f);
+			break;
+	}
 }
