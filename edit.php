@@ -14,6 +14,10 @@ if (isset($_POST['submit'])) {
   die(header('Location: index.php'));
 }
 
+// Заголовок страницы
+$title="Редактирование статьиа";
+
+// Заготовка страницы
 $content='theme/edit.php';
 
 // Вывод HTML

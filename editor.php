@@ -1,16 +1,16 @@
 <?php
 
-require_once('startup.php');
-require_once('model.php');
+require_once('SQL/startup.php');
+require_once('model/model.php');
 
-// подключаемся к БД
-startup();
+// Подготовка данных
+$articles_all = articles_all();
 
-// извлекаем все статьи
-$articles = articles_all();
+// Заголовок страницы
+$title="Консоль редактора";
 
-// кодировку
-header('Content-type: text/html; charset=utf-8');
+// Заготовка страницы
+$content='theme/editor.php';
 
-// вывод в шаблон
-include('theme/editor.php');
+// Вывод HTML
+include('Pattern/pattern-main.php');
